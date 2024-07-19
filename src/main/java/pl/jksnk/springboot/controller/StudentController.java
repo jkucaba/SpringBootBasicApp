@@ -2,6 +2,7 @@ package pl.jksnk.springboot.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.jksnk.springboot.bean.Student;
 
@@ -43,5 +44,15 @@ public class StudentController {
     @GetMapping("students/{id}/{first-name}/{last-name}")
     public Student studentPathVariable(@PathVariable("id") int studentId, @PathVariable("first-name") String fName, @PathVariable("last-name") String lName){
         return new Student(studentId, fName, lName);
+    }
+
+    // String Boot REST API with Request Param
+    //http://localhost:8080/students/query?id=1&firstName=Jakub&lastName=Głowacki
+
+    @GetMapping("students/query")
+    public Student studentRequestVariable(@RequestParam int id,
+                                          @RequestParam String firstName,
+                                          @RequestParam String lastName){
+        return new Student(id, firstName, lastName);
     }
 }

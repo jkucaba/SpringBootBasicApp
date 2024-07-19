@@ -81,4 +81,15 @@ public class StudentController {
         return student;
     }
 
+    // Spring Boot REST API that handles HTTP Delete Request
+    // @ DeleteMapping - annotation for mapping HTTP DELETE requests onto specific handler methods / deleting resource
+
+    @DeleteMapping("students/{id}/delete")
+    public String deleteStudent(@PathVariable("id") int studentId){
+        System.out.println(studentId);
+
+        return "Student deleted successfully with id: " + studentId;
+    }
+
+
 }

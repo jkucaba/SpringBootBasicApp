@@ -55,7 +55,7 @@ public class StudentController {
     }
 
     // Spring Boot REST API that handles HTTP Post Request
-    // @ PostMapping - annotation for mapping HTTP POST requests onto specific handler methods
+    // @ PostMapping - annotation for mapping HTTP POST requests onto specific handler methods / creating resource
     // @ RequestBody - annotation to bind the HTTP request/response body with a domain object in method parameter or return type
 
     @PostMapping("students/create")
@@ -67,4 +67,18 @@ public class StudentController {
 
         return student;
     }
+
+
+    // Spring Boot REST API that handles HTTP Put Request
+    // @ PutMapping - annotation for mapping HTTP PUT requests onto specific handler methods / updating resource
+
+    @PutMapping("students/{id}/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Student updateStudent(@RequestBody Student student, @PathVariable("id") int studentId){
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+
+        return student;
+    }
+
 }

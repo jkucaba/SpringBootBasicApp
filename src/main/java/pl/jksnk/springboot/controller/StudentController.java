@@ -1,9 +1,6 @@
 package pl.jksnk.springboot.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.jksnk.springboot.bean.Student;
 
 import java.util.ArrayList;
@@ -54,5 +51,18 @@ public class StudentController {
                                           @RequestParam String firstName,
                                           @RequestParam String lastName){
         return new Student(id, firstName, lastName);
+    }
+
+    // Spring Boot REST API that handles HTTP Post Request
+    // @ PostMapping - annotation for mapping HTTP POST requests onto specific handler methods
+    // @ RequestBody - annotation to bind the HTTP request/response body with a domain object in method parameter or return type
+
+    @PostMapping("students/create")
+    public Student createStudent(@RequestBody Student student){
+        System.out.println(student. getId());
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+
+        return student;
     }
 }

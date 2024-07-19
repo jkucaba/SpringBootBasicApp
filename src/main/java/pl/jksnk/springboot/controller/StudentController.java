@@ -1,6 +1,7 @@
 package pl.jksnk.springboot.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import pl.jksnk.springboot.bean.Student;
 
@@ -32,5 +33,15 @@ public class StudentController {
         students.add(new Student(4, "Mikuś", "Wrocławski"));
 
         return students;
+    }
+
+    // Spring BOOT REST API with Path Variable
+    //{id} - URI template variable
+    // @PathVariable - annotation which indicates that a method parameter should be bound to a URI template variable
+    //http://localhost:8080/students/1
+
+    @GetMapping("students/{id}")
+    public Student studentPathVariable(@PathVariable("id") int studentId){
+        return new Student(studentId, "Jakub", "Głowacki");
     }
 }

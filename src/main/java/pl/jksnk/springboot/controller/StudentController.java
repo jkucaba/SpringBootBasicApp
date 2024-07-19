@@ -38,10 +38,10 @@ public class StudentController {
     // Spring BOOT REST API with Path Variable
     //{id} - URI template variable
     // @PathVariable - annotation which indicates that a method parameter should be bound to a URI template variable
-    //http://localhost:8080/students/1
+    //http://localhost:8080/students/1/Jakub/Głowacki
 
-    @GetMapping("students/{id}")
-    public Student studentPathVariable(@PathVariable("id") int studentId){
-        return new Student(studentId, "Jakub", "Głowacki");
+    @GetMapping("students/{id}/{first-name}/{last-name}")
+    public Student studentPathVariable(@PathVariable("id") int studentId, @PathVariable("first-name") String fName, @PathVariable("last-name") String lName){
+        return new Student(studentId, fName, lName);
     }
 }

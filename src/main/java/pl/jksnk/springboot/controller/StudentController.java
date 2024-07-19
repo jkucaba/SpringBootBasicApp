@@ -1,5 +1,6 @@
 package pl.jksnk.springboot.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.jksnk.springboot.bean.Student;
 
@@ -58,6 +59,7 @@ public class StudentController {
     // @ RequestBody - annotation to bind the HTTP request/response body with a domain object in method parameter or return type
 
     @PostMapping("students/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public Student createStudent(@RequestBody Student student){
         System.out.println(student. getId());
         System.out.println(student.getFirstName());
